@@ -16,5 +16,14 @@ const middleware = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  verifyTokenAndUserAuthorization: (req, res) => {
+    verifyToken(req, res, () => {
+      if (req.user._id === req.params.id || req.user.role) {
+        next();
+      } else {
+        res.status(403).json("You're not allowed to do that!");
+      }
+    });
+  },
 };
 module.exports = middleware;

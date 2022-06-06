@@ -5,4 +5,6 @@ const userController = require("../controllers/user");
 router.get("/users", middleware.verifyToken, userController.getAllUsers);
 router.post("/register", userController.register);
 router.post("/login", userController.login);
+router.post("/refreshToken", userController.requestRefreshToken);
+router.post("/logout", userController.logOut);
 module.exports = router;
