@@ -15,4 +15,7 @@ app.use(cookieParser());
 dbConnect();
 const PORT = process.env.PORT || 5000;
 app.use("/v1", userRoute);
+app.use("/", (req, res) => {
+  res.render("hello world");
+});
 app.listen(PORT, () => console.log(`server running at ${PORT}`));
